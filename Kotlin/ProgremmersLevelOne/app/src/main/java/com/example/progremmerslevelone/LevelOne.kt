@@ -11,20 +11,15 @@ fun main() {
     minNumberDelete(arr)
 }
 
-//가변 인자 : 함수 호출 시 인자 개수를 유동적으로 지정 가능
-fun sum(vararg num: Int) = num.sum()
+fun pickTwoNumberPlus(numbers: IntArray) : IntArray {
+    val answer = mutableSetOf<Int>()
 
-fun main(args: Array<String>) {
-    val n1 = sum(1)
-    val n2 = sum(1, 2, 3, 4)
-}
-
-fun showAll(vararg s: String) {
-    println(s.joinToString())
-}
-
-//이미 존재하는 배열을 vararg 함수의 인자로 넘겨야할 때가 있다. 이런 경우에는 배열명 앞에 *(Spread Operator)를 붙인다.
-fun showMain(args: Array<String>) {
-    val test = arrayOf("A", "B", "C")
-    showAll(*test)
+    //서로 다른 인덱스의 값을 조회하여 합산
+    for (i in 0 until numbers.size - 1) {
+        for (j in i + 1 until numbers.size) {
+            answer.add(numbers[i] + numbers[j])
+        }
+    }
+    //오름차순 정렬
+    return answer.sorted().toIntArray()
 }
