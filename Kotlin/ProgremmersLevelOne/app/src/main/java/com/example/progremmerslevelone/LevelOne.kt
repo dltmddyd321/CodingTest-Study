@@ -23,3 +23,8 @@ fun pickTwoNumberPlus(numbers: IntArray) : IntArray {
     //오름차순 정렬
     return answer.sorted().toIntArray()
 }
+
+//문자열 내림차순 정렬
+fun solution(s: String): String {
+    return s.toCharArray().sortedDescending().joinToString("")
+}
