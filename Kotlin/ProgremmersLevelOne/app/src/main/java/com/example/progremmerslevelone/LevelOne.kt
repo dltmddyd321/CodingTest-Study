@@ -28,3 +28,30 @@ fun pickTwoNumberPlus(numbers: IntArray) : IntArray {
 fun solution(s: String): String {
     return s.toCharArray().sortedDescending().joinToString("")
 }
+
+//정수 내림차순 정렬
+fun descNumbers(n: Long) : Long {
+    return String("$n".toCharArray().sortedArrayDescending()).toLong()
+}
+
+//약수의 개수를 더하고, 개수가 홀수이면 - 처리
+fun getMeasureCnt(left: Int, right: Int) : Int {
+    var answer = 0
+
+    (left..right).forEach { num ->
+        var cnt = 0
+
+        //만일 약수이면 cnt ++
+        (1..num).forEach {
+            if (num % it == 0) cnt ++
+        }
+
+        answer += when (cnt % 2) {
+            0 -> num
+            else -> - num
+        }
+    }
+
+    return answer
+}
+
