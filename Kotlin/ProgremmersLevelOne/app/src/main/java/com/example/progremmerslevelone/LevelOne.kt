@@ -4,14 +4,14 @@ package com.example.progremmerslevelone
 // 단, 리턴하려는 배열이 빈 배열인 경우엔 배열에 -1을 채워 리턴하세요.
 // 예를들어 arr이 [4,3,2,1]인 경우는 [4,3,2]를 리턴 하고, [10]면 [-1]을 리턴 합니다.
 fun minNumberDelete(arr: IntArray): IntArray = if (arr.size == 1) intArrayOf(-1)
-    else arr.filter {  it != arr.minOrNull() }.toIntArray()
+else arr.filter { it != arr.minOrNull() }.toIntArray()
 
 fun main() {
-    val arr : IntArray = intArrayOf(1, 3, 4)
+    val arr: IntArray = intArrayOf(1, 3, 4)
     minNumberDelete(arr)
 }
 
-fun pickTwoNumberPlus(numbers: IntArray) : IntArray {
+fun pickTwoNumberPlus(numbers: IntArray): IntArray {
     val answer = mutableSetOf<Int>()
 
     //서로 다른 인덱스의 값을 조회하여 합산
@@ -29,29 +29,27 @@ fun solution(s: String): String {
     return s.toCharArray().sortedDescending().joinToString("")
 }
 
-//정수 내림차순 정렬
-fun descNumbers(n: Long) : Long {
-    return String("$n".toCharArray().sortedArrayDescending()).toLong()
+//자연수 n을 뒤집어 배열로 반환
+fun solution(n: Long): IntArray {
+    return n.toString().reversed().map {
+        it.toString().toInt()
+    }.toIntArray()
 }
 
-//약수의 개수를 더하고, 개수가 홀수이면 - 처리
-fun getMeasureCnt(left: Int, right: Int) : Int {
-    var answer = 0
-
-    (left..right).forEach { num ->
-        var cnt = 0
-
-        //만일 약수이면 cnt ++
-        (1..num).forEach {
-            if (num % it == 0) cnt ++
-        }
-
-        answer += when (cnt % 2) {
-            0 -> num
-            else -> - num
-        }
+//자릿수 더하기
+fun sumPosition() {
+    fun solution(n: Int): Int {
+        return n.toString().map {
+            it.toInt() - 48
+        }.sum()
     }
-
-    return answer
 }
 
+//부족한 금액 구하기
+fun scarceMoney(price: Int, money: Int, count: Int): Long {
+    return (1..count).sumOf {
+        it * price.toLong()
+    }.let { sum ->
+        if (money > sum) 0 else sum - money
+    }
+}
