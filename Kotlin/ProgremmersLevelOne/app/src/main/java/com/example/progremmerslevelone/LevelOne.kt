@@ -53,3 +53,7 @@ fun scarceMoney(price: Int, money: Int, count: Int): Long {
         if (money > sum) 0 else sum - money
     }
 }
+
+fun sumSolution(n: Int): Int = (1..n).filter {
+    n % it == 0
+}.sum()
