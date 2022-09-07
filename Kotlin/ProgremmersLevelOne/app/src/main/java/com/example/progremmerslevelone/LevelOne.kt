@@ -57,3 +57,20 @@ fun scarceMoney(price: Int, money: Int, count: Int): Long {
 fun sumSolution(n: Int): Int = (1..n).filter {
     n % it == 0
 }.sum()
+
+fun divisionArr(arr: IntArray, divisor: Int): IntArray {
+    var answer = intArrayOf()
+    val temp = mutableListOf<Int>()
+
+    for (i in arr.indices) {
+        if (arr[i] % divisor == 0){
+            temp.add(arr[i])
+        } else continue
+    }
+    if (temp.size == 0) {
+        temp.add(-1)
+    }
+    temp.sort()
+    answer = temp.toIntArray()
+    return answer
+}
