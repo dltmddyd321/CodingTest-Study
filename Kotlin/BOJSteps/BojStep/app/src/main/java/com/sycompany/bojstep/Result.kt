@@ -53,3 +53,35 @@ fun ovenClock() = with(Scanner(System.`in`)) {
 
     println("$h $m")
 }
+
+//2480
+fun diceResult() = with(Scanner(System.`in`)) {
+    val a = nextInt()
+    val b = nextInt()
+    val c = nextInt()
+
+    val values = listOf(a, b, c)
+
+    if(a==b && b==c) {
+        println("${10000+(a*1000)}")
+    } else if (a==b && b!=c) {
+        println("${1000+(a*100)}")
+    } else if (a!=b && b==c) {
+        println("${1000+(c*100)}")
+    } else if (a==c && b!=c) {
+        println("${1000+(c*100)}")
+    } else if (a!=b && b!=c && a!=c) {
+        //배열에서 최대 값을 추출한다.
+        println("${Collections.max(values)*100}")
+    }
+}
+
+//8393
+fun allPlus() = with(Scanner(System.`in`)) {
+    val num = nextInt()
+    var result = 0
+    for (i in 1..num) {
+        result += i
+    }
+    println(result)
+}
