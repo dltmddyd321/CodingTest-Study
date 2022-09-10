@@ -1,5 +1,9 @@
 package com.sycompany.bojstep
 
+import java.io.BufferedReader
+import java.io.BufferedWriter
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
 import java.util.*
 
 fun main() {
@@ -84,4 +88,60 @@ fun allPlus() = with(Scanner(System.`in`)) {
         result += i
     }
     println(result)
+}
+
+//영수증
+fun receipt() = with(Scanner(System.`in`)) {
+    val allPrice = nextInt()
+    val typeCnt = nextInt()
+    var checkPrice = 0
+
+    for (i in 1..typeCnt) {
+        checkPrice += (nextInt() * nextInt())
+    }
+
+    if (checkPrice == allPrice) {
+        println("Yes")
+    } else {
+        println("No")
+    }
+}
+
+//15552 -> 시간 초과 대응 처리
+/*
+BufferedReader & BufferedWriter : 입력된 데이터가 바로 전달되지 않고 버퍼를 거친 후 전달되므로 Scanner보다 속도가 삐름
+readLine : 입력받은 값을 String으로 변환 (여기서는 숫자를 사용하므로 int로 변환)
+StringTokenizer : 공백을 기준으로 String을 나눠줌
+ */
+fun fastAPlusB() = with(BufferedReader(InputStreamReader(System.`in`))) {
+    val w = BufferedWriter(OutputStreamWriter(System.out))
+
+    for (i in 1..readLine().toInt()) {
+        StringTokenizer(readLine()).run {
+            val a = nextToken().toInt()
+            val b = nextToken().toInt()
+
+            w.write("Case #$i: ${a + b}\n")
+        }
+    }
+    w.flush()
+    w.close()
+    close()
+}
+
+fun plusCycle() = with(BufferedReader(InputStreamReader(System.`in`))) {
+    val w = BufferedWriter(OutputStreamWriter(System.out))
+    var number = readLine().toInt()
+    val copy = number
+    var cnt = 0   // 싸이클 길이 카운트
+
+    do {
+        number = number % 10 * 10 + (number / 10 + number % 10) % 10
+        cnt ++
+    } while (copy != number)
+
+    w.write(cnt.toString())
+    w.flush()
+    w.close()
+    close()
 }
