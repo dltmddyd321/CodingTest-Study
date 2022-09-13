@@ -145,3 +145,30 @@ fun plusCycle() = with(BufferedReader(InputStreamReader(System.`in`))) {
     w.close()
     close()
 }
+
+//4344
+fun average() = with(Scanner(System.`in`)){
+    val c = nextInt()
+
+    for (i in 0 until c) {
+        var sum = 0
+        var avg = 0.0
+        var cnt = 0
+        val size = nextInt()
+        val array = IntArray(size)
+
+        for (j in array.indices) {
+            array[j] = nextInt()
+        }
+        for (j in array.indices) {
+            sum += array[j]
+        }
+        avg = sum.toDouble() / size
+        for (j in array.indices) {
+            if (array[j] > avg) {
+                cnt ++
+            }
+        }
+        System.out.printf("%.3f%s\n", cnt.toDouble() / size * 100, "%")
+    }
+}
