@@ -206,3 +206,27 @@ fun selfNumber() {
         }
     }
 }
+
+//그룹 단어 체커
+fun groupWord() {
+    val n = readln().toInt()
+    var groupWords = n
+
+    //단어 개수만큼 반복
+    repeat(n) {
+        val word = readln()
+        val charSet = mutableSetOf<Char>()
+        var lastChar : Char? = null
+        var isGroup = true
+
+        word.forEach {
+            if (lastChar != it) {
+                lastChar = it
+                //이미 포함되어 있다면 그룹 단어가 아니다.
+                if (!charSet.add(it)) isGroup = false
+            }
+        }
+        if (!isGroup) groupWords --
+    }
+    println(groupWords)
+}
