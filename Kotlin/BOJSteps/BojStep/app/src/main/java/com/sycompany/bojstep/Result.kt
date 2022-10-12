@@ -230,3 +230,58 @@ fun groupWord() {
     }
     println(groupWords)
 }
+
+//아스키코드
+fun dial() {
+    val arr = intArrayOf(3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10)
+
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    var res = 0
+    val str = br.readLine().toCharArray()
+
+    fun checkNum(num: Char): Int = arr[num.toInt() - 65]
+
+    for (ch in str) {
+        res += checkNum(ch)
+    }
+
+    println(res)
+}
+
+//손익분기점
+fun test() {
+    val s = Scanner(System.`in`)
+    val a = s.nextInt()
+    val b = s.nextInt()
+    val c = s.nextInt()
+
+    val n: Int = if (c-b > 0) {
+        a/(c-b) + 1
+    } else {
+        -1
+    }
+
+    println(n)
+}
+
+//소수 찾기
+fun findNum() {
+    val sc = Scanner(System.`in`)
+    val n = sc.nextInt()
+    var checkCnt = 0
+    var totalCnt = 0
+
+    for (i in 0 until n) {
+        val a = sc.nextInt()
+
+        for (j in 2..a) {
+            //소수 조건
+            if (a % j == 0) {
+                checkCnt ++
+            }
+        }
+        if (checkCnt == 1) totalCnt ++
+        checkCnt = 0
+    }
+    println(totalCnt)
+}
