@@ -285,3 +285,29 @@ fun findNum() {
     }
     println(totalCnt)
 }
+
+fun findFountain() = with(Scanner(System.`in`)) {
+    val x = nextInt()
+    var sum = 1 //분자와 분모의 합
+    var tmp = 0
+
+    //분자 분모 합 구하기
+    while (tmp < x) {
+        tmp += sum
+        sum ++
+    }
+
+    //합이 짝수라면
+    if (sum % 2 == 0) {
+        val m = (tmp - x + 1)
+        val d = sum - m
+        println("${m/d}")
+    }
+
+    //합이 홀수라면
+    else {
+        val d = (tmp - x + 1)
+        val m = sum - d
+        println("${m/d}")
+    }
+}
