@@ -311,3 +311,16 @@ fun findFountain() = with(Scanner(System.`in`)) {
         println("${m/d}")
     }
 }
+
+//수 정렬하기
+fun sortOne() = with(Scanner(System.`in`)) {
+    val n = nextInt()
+    val list = mutableListOf<Int>()
+
+    repeat(n) {
+        list.add(nextInt())
+    }
+
+    list.sorted()
+        .forEach { println(it) }
+}
