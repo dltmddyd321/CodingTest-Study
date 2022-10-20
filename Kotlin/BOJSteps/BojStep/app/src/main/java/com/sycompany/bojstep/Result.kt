@@ -4,10 +4,12 @@ import java.io.BufferedReader
 import java.io.BufferedWriter
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
+import java.lang.StringBuilder
 import java.util.*
+import kotlin.collections.ArrayList
 
 fun main() {
-    ovenClock()
+    cutLine()
 }
 
 //3003번
@@ -286,6 +288,44 @@ fun findNum() {
     println(totalCnt)
 }
 
+fun rangeNum() = with(BufferedReader(InputStreamReader(System.`in`))) {
+    val m = readLine().toInt()
+    val n = readLine().toInt()
+    var min = 0
+    var sum = 0
+
+    val arr = Array(n + 1) { true }
+
+    //0과 1은 소수가 아니다.
+    arr[0] = false
+    arr[1] = false
+
+    for (i in 2..n) {
+        if (arr[i]) {
+            //소수의 배수는 전부 소수가 아니다.
+            for(j in (2 * i)..n step i) {
+                arr[j] = false
+            }
+        }
+    }
+
+    for (i in m..n) {
+        if (arr[i]) {
+            if (min == 0) {
+                min = i
+            }
+            sum += i
+        }
+    }
+
+    if (min == 0) {
+        println(-1)
+    } else {
+        println(sum)
+        println(min)
+    }
+}
+
 fun findFountain() = with(Scanner(System.`in`)) {
     val x = nextInt()
     var sum = 1 //분자와 분모의 합
@@ -323,4 +363,42 @@ fun sortOne() = with(Scanner(System.`in`)) {
 
     list.sorted()
         .forEach { println(it) }
+}
+
+//피보나치 수열
+fun fibo() = with(BufferedReader(InputStreamReader(System.`in`))) {
+    fun fibonacci(N: Int): Int {
+        return if (N < 2) N else fibonacci(N-1) + fibonacci(N-2)
+    }
+    val n = readLine().toInt()
+    println(fibonacci(n))
+}
+
+fun dungchi() = with(BufferedReader(InputStreamReader(System.`in`))) {
+    val cnt = readln().toInt()
+    val inputs = Array(cnt) {
+        readln().split(' ').map { it.toInt() }
+    }
+    val res = StringBuilder()
+    for (first in inputs) {
+        var rank = 1
+        for (second in inputs) {
+            if (second[0] > first[0] && second[1] > first[1]) rank++
+        }
+        res.append(rank).append(' ')
+    }
+    println(res)
+}
+
+fun cutLine() = with(BufferedReader(InputStreamReader(System.`in`))) {
+    val n = readln().toInt()
+    val p = readln().toInt()
+    val arr = ArrayList<Int>()
+
+    for (i in 0 until n) {
+        arr.add(readln().toInt())
+    }
+
+    arr.sortedDescending()
+    println(arr[p-1])
 }
