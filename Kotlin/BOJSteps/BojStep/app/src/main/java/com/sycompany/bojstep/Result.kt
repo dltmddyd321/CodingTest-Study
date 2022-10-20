@@ -1,5 +1,6 @@
 package com.sycompany.bojstep
 
+import android.util.ArraySet
 import java.io.BufferedReader
 import java.io.BufferedWriter
 import java.io.InputStreamReader
@@ -401,4 +402,18 @@ fun cutLine() = with(BufferedReader(InputStreamReader(System.`in`))) {
 
     arr.sortedDescending()
     println(arr[p-1])
+}
+
+fun sorted() = with(Scanner(System.`in`)) {
+    val str = next()
+    val arr = arrayOfNulls<String>(str.length)
+
+    for (i in arr.indices) {
+        arr[i] = str[i].toString()
+    }
+    Arrays.sort(arr, Collections.reverseOrder())
+    for (i in 1 until arr.size) {
+        arr[0] += arr[1]
+    }
+    println(arr[0])
 }
