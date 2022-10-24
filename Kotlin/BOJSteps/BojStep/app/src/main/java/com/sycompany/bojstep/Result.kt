@@ -429,3 +429,20 @@ fun numberCard() = with(BufferedReader(InputStreamReader(System.`in`))) {
     }
 }
 
+fun counter() = with(Scanner(System.`in`)) {
+    val n = nextInt()
+    val arr = IntArray(n)
+    var cnt = 0
+
+    //배열에 입력 값만큼 ADD
+    for (i in 0 until n) {
+        arr[i] = nextInt()
+    }
+    val v = nextInt()
+
+    for (i in arr.indices) {
+        if (v == arr[i]) cnt++
+    }
+
+    println(cnt)
+}
