@@ -1,16 +1,13 @@
 package com.sycompany.bojstep
 
-import android.util.ArraySet
 import java.io.BufferedReader
 import java.io.BufferedWriter
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
-import java.lang.StringBuilder
 import java.util.*
-import kotlin.collections.ArrayList
 
 fun main() {
-    cutLine()
+    ceoValue()
 }
 
 //3003번
@@ -445,4 +442,39 @@ fun counter() = with(Scanner(System.`in`)) {
     }
 
     println(cnt)
+}
+
+fun ceoValue() = with(Scanner(System.`in`)) {
+    val arr = IntArray(5)
+    var hap = 0
+
+    for (i in arr.indices) {
+        arr[i] = nextInt()
+        hap += arr[i]
+    }
+
+    println(hap / arr.size)
+    println(arr[2])
+}
+
+fun checkMission() = with(Scanner(System.`in`)) {
+    val student = IntArray(31)
+
+    for (i in 1..28) {
+        val success = nextInt()
+        student[success] = 1
+    }
+    for (i in 1 until student.size) {
+        if (student[i] != 1) println(i)
+    }
+}
+
+fun croatiaAlphabetSearch() = with(BufferedReader(InputStreamReader(System.`in`))) {
+    val croatiaAlphabet = arrayOf("c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z=")
+    var str = readLine()
+
+    croatiaAlphabet.forEach {
+        str = str.replace(it, "A")
+    }
+    println(str.length)
 }
