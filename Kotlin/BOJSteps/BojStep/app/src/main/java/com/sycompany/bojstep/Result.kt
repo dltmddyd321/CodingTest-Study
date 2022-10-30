@@ -5,6 +5,7 @@ import java.io.BufferedWriter
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.util.*
+import kotlin.math.roundToInt
 
 fun main() {
     ceoValue()
@@ -477,4 +478,33 @@ fun croatiaAlphabetSearch() = with(BufferedReader(InputStreamReader(System.`in`)
         str = str.replace(it, "A")
     }
     println(str.length)
+}
+
+fun statistics() {
+    fun getAvg(numList: MutableList<Int>): Int = numList.average().roundToInt()
+
+    fun getMid(numList: MutableList<Int>): Int {
+        val sortedList = numList.sorted()
+        val mid = numList.size / 2
+        return sortedList[mid]
+    }
+
+    fun getFreq(numList: MutableList<Int>): Int {
+        val freqMap = numList.groupingBy { it }.eachCount()
+        val maxValue = freqMap.maxOf { it.value }
+        val maxFreqMap = freqMap.filter { it.value == maxValue }
+        val mapKeys = maxFreqMap.keys.sorted()
+
+        return if (mapKeys.size == 1) {
+            mapKeys.first()
+        } else {
+            mapKeys[1]
+        }
+    }
+
+    fun getRange(numList: MutableList<Int>): Int {
+        val maxValue = numList.maxOf { it }
+        val minValue = numList.minOf { it }
+        return maxValue - minValue
+    }
 }
