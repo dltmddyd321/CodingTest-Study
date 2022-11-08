@@ -8,7 +8,7 @@ import java.util.*
 import kotlin.math.roundToInt
 
 fun main() {
-    ceoValue()
+    setPointUp()
 }
 
 //3003번
@@ -519,6 +519,22 @@ fun zeroStack() = with(System.`in`.bufferedReader()) {
         else stack.add(temp)
     }
     println(stack.sum())
+}
+
+fun setPointUp() = with(Scanner(System.`in`)) {
+    data class Point(
+        val x: Int,
+        val y: Int
+    )
+    val list = arrayListOf<Point>()
+    val cnt = nextInt()
+    repeat(cnt) {
+        list.add(Point(nextInt(), nextInt()))
+    }
+
+    val result = list.sortedWith(compareBy({it.x}, {it.y}))
+
+    println(result)
 }
 
 
