@@ -8,7 +8,7 @@ import java.util.*
 import kotlin.math.roundToInt
 
 fun main() {
-    yaksu()
+    stringSet()
 }
 
 //3003번
@@ -547,4 +547,37 @@ fun yaksu() = with(Scanner(System.`in`)) {
     println(result)
 }
 
+fun stringSet() = with(Scanner(System.`in`)) {
+    val n = nextInt()
+    val m = nextInt()
+    val setList = arrayListOf<String>()
+    val inputList = arrayListOf<String>()
+
+    repeat(n) {
+        setList.add(nextLine())
+    }
+    repeat(m) {
+        inputList.add(nextLine())
+    }
+
+    val result = setList.intersect(inputList).size
+    println(result)
+}
+
+fun stringSetTwo() = with(System.out.bufferedWriter()){
+    val br = System.`in`.bufferedReader()
+    val set = HashSet<String>()
+    val (n,m) = br.readLine().split(' ').map{it.toInt()}
+    var answer=0
+    for(i in 0 until n){
+        set.add(br.readLine())
+    }
+    for(i in 0 until m){
+        if(set.contains(br.readLine()))
+            answer++
+    }
+
+    write("$answer")
+    close()
+}
 
