@@ -8,7 +8,7 @@ import java.util.*
 import kotlin.math.roundToInt
 
 fun main() {
-    setPointUp()
+    yaksu()
 }
 
 //3003번
@@ -534,6 +534,16 @@ fun setPointUp() = with(Scanner(System.`in`)) {
 
     val result = list.sortedWith(compareBy({it.x}, {it.y}))
 
+    println(result)
+}
+
+fun yaksu() = with(Scanner(System.`in`)) {
+    val list = arrayListOf<Int>()
+    val cnt = nextInt()
+    repeat(cnt) {
+        list.add(nextInt())
+    }
+    val result = list.max() * list.min()
     println(result)
 }
 
