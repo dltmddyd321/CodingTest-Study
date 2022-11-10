@@ -5,6 +5,7 @@ import java.io.BufferedWriter
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.util.*
+import kotlin.collections.HashMap
 import kotlin.math.roundToInt
 
 fun main() {
@@ -581,3 +582,43 @@ fun stringSetTwo() = with(System.out.bufferedWriter()){
     close()
 }
 
+//듣보잡
+fun noSeeNoHeard() {
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    val bw = BufferedWriter(OutputStreamWriter(System.out))
+
+    val neverHeard = HashMap<String, Boolean>()
+    val neverSeen = HashMap<String, Boolean>()
+    val never = mutableListOf<String>()
+
+    val cnt = br.readLine().split("")
+
+    repeat(cnt[0].toInt() + cnt[1].toInt()) {
+        val man = br.readLine()
+
+        if (it < cnt[0].toInt()) {
+            neverHeard[man] = true
+        } else {
+            neverSeen[man] = true
+        }
+    }
+
+    if (neverHeard.size < neverSeen.size) {
+        neverSeen.forEach {
+            if (neverHeard[it.key] == true) never.add(it.key)
+        }
+    } else {
+        neverHeard.forEach {
+            if (neverSeen[it.key] == true) never.add(it.key)
+        }
+    }
+
+    bw.write("${never.size}")
+    never.sort()
+    never.forEach {
+        bw.write("$it\n")
+    }
+
+    bw.flush()
+    bw.close()
+}
