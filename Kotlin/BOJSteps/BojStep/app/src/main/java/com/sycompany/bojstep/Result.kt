@@ -622,3 +622,15 @@ fun noSeeNoHeard() {
     bw.flush()
     bw.close()
 }
+
+fun anotherStringSet() = with(Scanner(System.`in`)) {
+    val s = nextLine()
+    val resultSet = mutableSetOf<String>()
+
+    for (i in 0..s.length) {
+        for (j in i + 1..s.length) {
+            resultSet.add(s.substring(i, j))
+        }
+    }
+    println(resultSet.size)
+}
