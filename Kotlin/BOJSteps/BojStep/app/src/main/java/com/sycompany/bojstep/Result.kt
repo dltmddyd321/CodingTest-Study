@@ -5,11 +5,10 @@ import java.io.BufferedWriter
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.util.*
-import kotlin.collections.HashMap
 import kotlin.math.roundToInt
 
 fun main() {
-    stringSet()
+    setNumber("100", "203045")
 }
 
 //3003번
@@ -633,4 +632,29 @@ fun anotherStringSet() = with(Scanner(System.`in`)) {
         }
     }
     println(resultSet.size)
+}
+
+fun setNumber(x: String, y: String) {
+
+    fun exchangeNum(s: String): IntArray {
+        val digits = IntArray(s.length)
+        for (i in s.indices) {
+            digits[i] = s[i] - '0'
+        }
+        return digits
+    }
+
+    val xArray: IntArray = exchangeNum(x)
+    val yArray: IntArray = exchangeNum(y)
+    val equalArray = mutableListOf<Int>()
+
+    xArray.forEach { if (it in yArray) equalArray.add(it) }
+
+    if (equalArray.isEmpty()) {
+        println("-1")
+        return
+    }
+
+    xArray.sortedDescending()
+    println(xArray.toString())
 }
