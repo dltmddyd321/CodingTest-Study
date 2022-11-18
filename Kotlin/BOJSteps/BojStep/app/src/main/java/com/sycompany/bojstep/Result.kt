@@ -8,7 +8,7 @@ import java.util.*
 import kotlin.math.roundToInt
 
 fun main() {
-    setNumber("100", "203045")
+    symmetricDifference()
 }
 
 //3003번
@@ -657,4 +657,21 @@ fun setNumber(x: String, y: String) {
 
     xArray.sortedDescending()
     println(xArray.toString())
+}
+
+fun symmetricDifference() = with(Scanner(System.`in`)) {
+    val (m, n) = readLine()!!.split(" ").map { it.toInt() }
+    val aList = mutableListOf<Int>()
+    val bList = mutableListOf<Int>()
+
+    fun setList(c: Int, list: MutableList<Int>) {
+        repeat(c) {
+            list.add(nextInt())
+        }
+    }
+
+    setList(m, aList)
+    setList(n, bList)
+
+    println(((aList - bList) + (bList - aList)).size)
 }
