@@ -5,10 +5,15 @@ import java.io.BufferedWriter
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.util.*
+import java.util.regex.Pattern
 import kotlin.math.roundToInt
 
 fun main() {
-    symmetricDifference()
+    if (isEmailValid("feg4ferfm@naver.com")) {
+        println("True")
+    } else {
+        println("False")
+    }
 }
 
 //3003번
@@ -674,4 +679,17 @@ fun symmetricDifference() = with(Scanner(System.`in`)) {
     setList(n, bList)
 
     println(((aList - bList) + (bList - aList)).size)
+}
+
+//정규식 활용 이메일 형식 체크
+fun isEmailValid(email: String): Boolean {
+    var isValid = false
+    val expression = "^[\\w.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
+    val inputStr: CharSequence = email
+    val pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
+    val matcher = pattern.matcher(inputStr)
+    if (matcher.matches()) {
+        isValid = true
+    }
+    return isValid
 }
