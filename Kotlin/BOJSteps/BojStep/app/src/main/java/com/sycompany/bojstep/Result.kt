@@ -9,11 +9,7 @@ import java.util.regex.Pattern
 import kotlin.math.roundToInt
 
 fun main() {
-    if (isEmailValid("feg4ferfm@naver.com")) {
-        println("True")
-    } else {
-        println("False")
-    }
+    searchSameCard()
 }
 
 //3003번
@@ -692,4 +688,50 @@ fun isEmailValid(email: String): Boolean {
         isValid = true
     }
     return isValid
+}
+
+fun searchSameCard() = with(Scanner(System.`in`)) {
+    val allCards = mutableListOf<Int>()
+    val selectedCards = mutableListOf<Int>()
+    val allCnt = nextInt()
+    val resultCounts = mutableListOf<Int>()
+    repeat(allCnt) {
+        allCards.add(nextInt())
+    }
+    val selectCnt = nextInt()
+    repeat(selectCnt) {
+        selectedCards.add(nextInt())
+    }
+
+    selectedCards.forEach { selectNum ->
+        var resultCnt = 0
+        allCards.forEach { allNum ->
+            if (selectNum == allNum) {
+                resultCnt ++
+            }
+        }
+        resultCounts.add(resultCnt)
+    }
+
+    println(resultCounts)
+}
+
+fun parenthesisCheck() = with(Scanner(System.`in`)) {
+    val allInputs = mutableListOf<String>()
+    val resultList = mutableListOf<String>()
+    val cnt = nextInt()
+    repeat(cnt) {
+        allInputs.add(nextLine())
+    }
+
+    allInputs.forEach {
+        when {
+            it.length % 2 != 0 -> {
+                resultList.add("NO")
+            }
+            else -> {
+                
+            }
+        }
+    }
 }
