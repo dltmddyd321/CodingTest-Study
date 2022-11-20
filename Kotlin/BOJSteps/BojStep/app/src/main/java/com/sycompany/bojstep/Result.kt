@@ -1,12 +1,20 @@
+@file:Suppress("BlockingMethodInNonBlockingContext")
+
 package com.sycompany.bojstep
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import java.io.BufferedReader
 import java.io.BufferedWriter
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.util.*
 import java.util.regex.Pattern
+import java.util.stream.Stream
 import kotlin.math.roundToInt
+import kotlin.system.measureTimeMillis
 
 fun main() {
     searchSameCard()
@@ -716,22 +724,36 @@ fun searchSameCard() = with(Scanner(System.`in`)) {
     println(resultCounts)
 }
 
-fun parenthesisCheck() = with(Scanner(System.`in`)) {
-    val allInputs = mutableListOf<String>()
-    val resultList = mutableListOf<String>()
-    val cnt = nextInt()
-    repeat(cnt) {
-        allInputs.add(nextLine())
-    }
+fun parenthesisCheck() = with(BufferedReader(InputStreamReader(System.`in`))) {
+    val n = readLine().toInt()
 
-    allInputs.forEach {
-        when {
-            it.length % 2 != 0 -> {
-                resultList.add("NO")
+    fun solve(str: String) {
+        val stack = Stack<Char>()
+
+        for (i in str) {
+            if (i == '(') {
+                stack.add(i)
             }
-            else -> {
-                
+            else if (i == ')') {
+                if (stack.isEmpty()) {
+                    println("NO")
+                    return
+                }
+                if (stack.pop() == ')') {
+                    println("NO")
+                    return
+                }
             }
         }
+        if (stack.isEmpty()) {
+            println("YES")
+        } else {
+            println("NO")
+        }
+    }
+
+    for (i in 0 until n) {
+        val str = readLine()
+        solve(str)
     }
 }
