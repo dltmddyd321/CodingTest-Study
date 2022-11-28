@@ -2,19 +2,13 @@
 
 package com.sycompany.bojstep
 
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
 import java.io.BufferedReader
 import java.io.BufferedWriter
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.util.*
 import java.util.regex.Pattern
-import java.util.stream.Stream
 import kotlin.math.roundToInt
-import kotlin.system.measureTimeMillis
 
 fun main() {
     searchSameCard()
@@ -756,4 +750,19 @@ fun parenthesisCheck() = with(BufferedReader(InputStreamReader(System.`in`))) {
         val str = readLine()
         solve(str)
     }
+}
+
+//삼총사 - 프로그래머스 -> 세 수를 더하면 0이 나오는 모든 경우의 횟수를 구한다.
+fun solution(number: IntArray): Int {
+    var answer = 0
+    for (i in number.indices) {
+        for (j in i + 1 until number.size) {
+            for (k in j + 1 until number.size) {
+                if (number[i] + number[j] + number[k] == 0) {
+                    answer++
+                }
+            }
+        }
+    }
+    return answer
 }
