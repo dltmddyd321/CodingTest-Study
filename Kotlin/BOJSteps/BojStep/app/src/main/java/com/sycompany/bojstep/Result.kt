@@ -774,3 +774,16 @@ fun solution(n: Int): Int {
     }
     return answer
 }
+
+//영화감독 숌
+fun movieNumber() = with(System.`in`.bufferedReader()) {
+    var n = readLine().toInt()
+    var startNum = 665
+    while (n != 0) {
+        startNum ++
+        if (startNum.toString().contains("666")) {
+            n --
+        }
+    }
+    println(startNum)
+}
