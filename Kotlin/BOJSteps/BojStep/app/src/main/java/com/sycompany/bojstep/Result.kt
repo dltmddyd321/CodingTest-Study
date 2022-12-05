@@ -787,3 +787,18 @@ fun movieNumber() = with(System.`in`.bufferedReader()) {
     }
     println(startNum)
 }
+
+fun soinsu() {
+    val br = System.`in`.bufferedReader()
+    val (n, k) = br.readLine().split(" ").map { it.toInt() }
+    val coins = Array(n) { br.readLine().toInt() }
+    var res = 0
+    var left = k
+
+    for (i in n - 1 downTo 0) {
+        res += left / coins[i]
+        left %= coins[i]
+    }
+
+    println(res)
+}
