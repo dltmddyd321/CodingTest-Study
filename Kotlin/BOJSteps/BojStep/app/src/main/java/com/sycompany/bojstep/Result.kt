@@ -788,6 +788,7 @@ fun movieNumber() = with(System.`in`.bufferedReader()) {
     println(startNum)
 }
 
+//동전 0
 fun soinsu() {
     val br = System.`in`.bufferedReader()
     val (n, k) = br.readLine().split(" ").map { it.toInt() }
