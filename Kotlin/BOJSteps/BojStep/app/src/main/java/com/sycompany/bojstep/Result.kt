@@ -803,3 +803,18 @@ fun soinsu() {
 
     println(res)
 }
+
+//종이 자르기
+fun solution(M: Int, N: Int): Int {
+    return M*N - 1
+}
+
+fun solutionDemon(n: Int, t: Int): Int {
+    var num = n
+    var count = 0
+    while (count != t) {
+        num *= 2
+        count++
+    }
+    return num
+}
