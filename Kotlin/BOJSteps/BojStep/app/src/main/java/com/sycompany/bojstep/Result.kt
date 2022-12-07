@@ -11,7 +11,10 @@ import java.util.regex.Pattern
 import kotlin.math.roundToInt
 
 fun main() {
-    searchSameCard()
+    val strArr = "[jason, kally, mike, kane]"
+    val slicing = strArr.slice(IntRange(1, strArr.length - 2))
+    val res = slicing.split(", ")
+    println(res)
 }
 
 //3003번
