@@ -8,13 +8,18 @@ import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.util.*
 import java.util.regex.Pattern
+import kotlin.math.abs
+import kotlin.math.min
 import kotlin.math.roundToInt
 
 fun main() {
-    val strArr = "[jason, kally, mike, kane]"
-    val slicing = strArr.slice(IntRange(1, strArr.length - 2))
-    val res = slicing.split(", ")
-    println(res)
+//    val strArr = "[jason, kally, mike, kane]"
+//    val slicing = strArr.slice(IntRange(1, strArr.length - 2))
+//    val res = slicing.split(", ")
+//    println(res)
+
+    val arr = intArrayOf(3, 10, 28)
+    println(nearNumber(arr, 20))
 }
 
 //3003번
@@ -821,3 +826,13 @@ fun solutionDemon(n: Int, t: Int): Int {
     }
     return num
 }
+
+fun nearNumber(array: IntArray, n: Int): Int {
+    var res = 0
+    val calculateMap: MutableMap<Int, Int> = mutableMapOf()
+    array.forEach { calculateMap[it] = abs(n - it) }
+    val minValue = calculateMap.minOf { it.value }
+    calculateMap.forEach { if (it.value == minValue) res = it.key }
+    return res
+}
+
