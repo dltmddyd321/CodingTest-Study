@@ -17,9 +17,11 @@ fun main() {
 //    val slicing = strArr.slice(IntRange(1, strArr.length - 2))
 //    val res = slicing.split(", ")
 //    println(res)
+//
+//    val arr = intArrayOf(3, 10, 28)
+//    println(nearNumber(arr, 20))
 
-    val arr = intArrayOf(3, 10, 28)
-    println(nearNumber(arr, 20))
+    println(colaFunc())
 }
 
 //3003번
@@ -834,5 +836,12 @@ fun nearNumber(array: IntArray, n: Int): Int {
     val minValue = calculateMap.minOf { it.value }
     calculateMap.forEach { if (it.value == minValue) res = it.key }
     return res
+}
+
+fun colaFunc(a: Int = 3, b: Int = 0, n: Int = 20): Int {
+    val takeColaList = mutableListOf<Int>()
+
+    val first = (n / a) + (n % a)
+    return first
 }
 
