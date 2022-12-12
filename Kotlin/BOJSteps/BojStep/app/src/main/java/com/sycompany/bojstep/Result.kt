@@ -9,7 +9,6 @@ import java.io.OutputStreamWriter
 import java.util.*
 import java.util.regex.Pattern
 import kotlin.math.abs
-import kotlin.math.min
 import kotlin.math.roundToInt
 
 fun main() {
@@ -845,3 +844,22 @@ fun colaFunc(a: Int = 3, b: Int = 0, n: Int = 20): Int {
     return first
 }
 
+fun afterParty() {
+    val scanner = Scanner(System.`in`)
+    val person = scanner.nextInt() //1m^2당 사람수
+
+    val width = scanner.nextInt() //면적
+
+    //기사별 사람 수
+    //기사별 사람 수
+    val a = scanner.nextInt()
+    val b = scanner.nextInt()
+    val c = scanner.nextInt()
+    val d = scanner.nextInt()
+    val e = scanner.nextInt()
+
+    if ((person >= 1 || person <= 10) && (width >= 1 || width <= 1000)) {
+        val realCount = width * person
+        print((a - realCount).toString() + " " + (b - realCount) + " " + (c - realCount) + " " + (d - realCount) + " " + (e - realCount) + " ")
+    }
+}
