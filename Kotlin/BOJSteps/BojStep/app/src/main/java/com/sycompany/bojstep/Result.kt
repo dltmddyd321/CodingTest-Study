@@ -863,3 +863,10 @@ fun afterParty() {
         print((a - realCount).toString() + " " + (b - realCount) + " " + (c - realCount) + " " + (d - realCount) + " " + (e - realCount) + " ")
     }
 }
+
+//직각거리 반환
+fun distanceCheck(args: Array<String>) = with(BufferedReader(InputStreamReader(System.`in`))) {
+    val (n, m) = readLine().split(" ").map { it.toInt() - 1 }
+    //가로 거리는 몫으로, 세로 거리는 나머지로 구할 수 있다.
+    println(abs(n / 4 - m / 4) + abs(n % 4 - m % 4))
+}
