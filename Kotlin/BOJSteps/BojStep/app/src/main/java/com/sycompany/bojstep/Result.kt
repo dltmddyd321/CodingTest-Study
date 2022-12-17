@@ -6,6 +6,7 @@ import java.io.BufferedReader
 import java.io.BufferedWriter
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
+import java.math.BigInteger
 import java.util.*
 import java.util.regex.Pattern
 import kotlin.math.abs
@@ -19,8 +20,7 @@ fun main() {
 //
 //    val arr = intArrayOf(3, 10, 28)
 //    println(nearNumber(arr, 20))
-
-    println(colaFunc())
+    candyTeacher()
 }
 
 //3003번
@@ -869,4 +869,21 @@ fun distanceCheck(args: Array<String>) = with(BufferedReader(InputStreamReader(S
     val (n, m) = readLine().split(" ").map { it.toInt() - 1 }
     //가로 거리는 몫으로, 세로 거리는 나머지로 구할 수 있다.
     println(abs(n / 4 - m / 4) + abs(n % 4 - m % 4))
+}
+
+fun candyTeacher() = with(Scanner(System.`in`)) {
+    val t = nextInt()
+
+    repeat(t) {
+        val n = nextInt()
+        var result = BigInteger.ZERO
+        repeat(n) {
+            result += nextBigInteger()
+        }
+
+        println(
+            if (result % n.toBigInteger() == BigInteger.ZERO) "YES"
+            else "NO"
+        )
+    }
 }
