@@ -887,3 +887,34 @@ fun candyTeacher() = with(Scanner(System.`in`)) {
         )
     }
 }
+
+fun checkFbi() = with(Scanner(System.`in`)) {
+    val arr = arrayListOf<String>()
+    repeat(5) {
+        arr.add(next())
+    }
+    arr.forEachIndexed { index, s ->
+        if (s.contains("FBI")) println(index + 1)
+    }
+}
+
+/*
+우선 평균을 구하는 법을 살펴보면 (앨범 내에 저작권이 있는 멜로디의 개수) / (앨범에 수록된 곡의 개수)이므로
+저작권이 있는 멜로디의 개수는 (앨범에 수록된 곡의 개수) * 평균이다.
+하지만 평균값을 항상 올림하므로 이렇게 계산한 값은 저작권이 있는 멜로디의 최대 개수가 된다.
+따라서 저작권 멜로디의 최소 개수는 (곡의 개수) * (평균에서 1을 뺀 수)를 계산한 다음 1을 더해주면 된다.
+멜로디의 개수가 1만 증가해도 값을 올림하게 되면 평균이 1 증가해 조건에 해당하기 때문이다.
+ */
+fun copyright() {
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    val bw = System.out.bufferedWriter()
+    val st = StringTokenizer(br.readLine())
+
+    val count = st.nextToken().toInt()
+    val avg = st.nextToken().toInt()
+
+    bw.write("${count*(avg-1)+1}\n")
+    bw.flush()
+    bw.close()
+    br.close()
+}
