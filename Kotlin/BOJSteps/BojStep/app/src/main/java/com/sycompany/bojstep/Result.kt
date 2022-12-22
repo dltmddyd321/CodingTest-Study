@@ -9,18 +9,12 @@ import java.io.OutputStreamWriter
 import java.math.BigInteger
 import java.util.*
 import java.util.regex.Pattern
+import kotlin.collections.ArrayDeque
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
 fun main() {
-//    val strArr = "[jason, kally, mike, kane]"
-//    val slicing = strArr.slice(IntRange(1, strArr.length - 2))
-//    val res = slicing.split(", ")
-//    println(res)
-//
-//    val arr = intArrayOf(3, 10, 28)
-//    println(nearNumber(arr, 20))
-    candyTeacher()
+    queueTest()
 }
 
 //3003번
@@ -917,4 +911,19 @@ fun copyright() {
     bw.flush()
     bw.close()
     br.close()
+}
+
+fun queueTest() {
+    val arrayDeque = ArrayDeque<Int>()
+
+    arrayDeque.add(1)
+    arrayDeque.add(2)
+    arrayDeque.addLast(3)
+    arrayDeque.addFirst(0)
+
+    println(arrayDeque)
+
+    arrayDeque.removeFirst()
+
+    println(arrayDeque)
 }
