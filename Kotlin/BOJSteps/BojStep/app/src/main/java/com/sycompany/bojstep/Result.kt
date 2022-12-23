@@ -942,3 +942,14 @@ fun numberPair(x: String, y: String) {
 
     println(maxValueStr.toInt())
 }
+
+//크기가 작은 부분 문자열
+fun lessSizeStr(t: String, p: String): Int {
+    var answer = 0
+    for (i in 0 until t.length - p.length + 1) { // t 문자열을 분할해서 순회해야하는 횟수
+        if (t.substring(i, i + p.length).toLong() <= p.toLong()) {
+            answer++
+        }
+    }
+    return answer
+}
