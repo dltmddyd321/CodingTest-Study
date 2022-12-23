@@ -14,7 +14,7 @@ import kotlin.math.abs
 import kotlin.math.roundToInt
 
 fun main() {
-    queueTest()
+    numberPair("12321","42531")
 }
 
 //3003번
@@ -926,4 +926,19 @@ fun queueTest() {
     arrayDeque.removeFirst()
 
     println(arrayDeque)
+}
+
+//숫자 짝꿍
+fun numberPair(x: String, y: String) {
+    val pairList = mutableSetOf<String>()
+
+    x.forEach { xNum ->
+        if (xNum in y) pairList.add(xNum.toString())
+    }
+
+    val res = pairList.sortedByDescending { it.toInt() }
+    var maxValueStr = "0"
+    res.forEach { maxValueStr += it }
+
+    println(maxValueStr.toInt())
 }
