@@ -953,3 +953,5 @@ fun lessSizeStr(t: String, p: String): Int {
     }
     return answer
 }
+
+fun letterSize(msg: String): Int = msg.length * 2
