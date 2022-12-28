@@ -953,3 +953,31 @@ fun lessSizeStr(t: String, p: String): Int {
     }
     return answer
 }
+
+fun letterSize(msg: String): Int = msg.length * 2
+
+fun prompt(args: Array<String>) = with(System.`in`.bufferedReader()) {
+    val files = mutableListOf<String>()
+    val n = readLine().toInt()
+
+    if (n == 1) {
+        println(readLine())
+        return@with
+    } else {
+        repeat(n) {
+            files.add(readLine())
+        }
+    }
+
+    val checkList = BooleanArray(files[0].length){ true }
+    for (i in files[0].indices) for (j in 1 until n) {
+        if (checkList[i]) checkList[i] = files[0][i] == files[j][i]
+    }
+
+    println(
+        checkList.mapIndexed { i: Int, b: Boolean ->
+            if (b) files[0][i]
+            else '?'
+        }.joinToString("")
+    )
+}
