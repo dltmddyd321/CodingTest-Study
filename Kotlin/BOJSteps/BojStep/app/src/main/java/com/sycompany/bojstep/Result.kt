@@ -981,3 +981,65 @@ fun prompt(args: Array<String>) = with(System.`in`.bufferedReader()) {
         }.joinToString("")
     )
 }
+
+//추론
+fun inference(args: Array<String>) {
+    // input
+    val f1 = readln()
+    val f2 = readln()
+    val f3 = readln()
+    // output
+    print(solution(f1, f2, f3))
+}
+
+fun solution(f1: String, f2: String, f3: String): Long {
+    return (findResistanceVal(f1) * 10 + findResistanceVal(f2)) * findResistanceMul(f3)
+}
+
+const val kBlack = "black"
+const val kBrown = "brown"
+const val kRed = "red"
+const val kOrange = "orange"
+const val kYellow = "yellow"
+const val kGreen = "green"
+const val kBlue = "blue"
+const val kViolet = "violet"
+const val kGrey = "grey"
+const val kWhite = "white"
+
+
+fun findResistanceVal(color: String): Long {
+    return when (color) {
+        kBlack -> 0L
+        kBrown -> 1L
+        kRed -> 2L
+        kOrange -> 3L
+        kYellow -> 4L
+        kGreen -> 5L
+        kBlue -> 6L
+        kViolet -> 7L
+        kGrey -> 8L
+        kWhite -> 9L
+        else -> {
+            -1L
+        }
+    }
+}
+
+fun findResistanceMul(color: String): Long {
+    return when (color) {
+        kBlack -> 1L
+        kBrown -> 10L
+        kRed -> 100L
+        kOrange -> 1000L
+        kYellow -> 10000L
+        kGreen -> 100000L
+        kBlue -> 1000000L
+        kViolet -> 10000000L
+        kGrey -> 100000000L
+        kWhite -> 1000000000L
+        else -> {
+            -1L
+        }
+    }
+}
