@@ -1043,3 +1043,14 @@ fun findResistanceMul(color: String): Long {
         }
     }
 }
+
+fun throwBall(numbers: IntArray, k: Int): Int {
+    var ansIndex = 0
+    for (i in 0 until k) {
+        ansIndex += 2
+        if (ansIndex > numbers.size) {
+            ansIndex -= numbers.size
+        }
+    }
+    return numbers[ansIndex - 2]
+}
