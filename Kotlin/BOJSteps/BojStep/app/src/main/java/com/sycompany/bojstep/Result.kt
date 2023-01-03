@@ -14,7 +14,7 @@ import kotlin.math.abs
 import kotlin.math.roundToInt
 
 fun main() {
-    numberPair("12321","42531")
+    println(pressStr("hello", "ohell"))
 }
 
 //3003번
@@ -1053,4 +1053,17 @@ fun throwBall(numbers: IntArray, k: Int): Int {
         }
     }
     return numbers[ansIndex - 2]
+}
+
+fun pressStr(a: String, b: String): Int {
+    var answer = 0
+    var aa = a
+    for (i in a.indices) {
+        if (aa == b) return answer
+        //마지막 문자를 잘라서 다시 맨 앞에 붙인다.
+        val x = aa.substring(aa.length - 1)
+        aa = x + aa.substring(0, aa.length - 1)
+        answer ++
+    }
+    return -1
 }
