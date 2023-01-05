@@ -15,7 +15,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textName : TextView
     private lateinit var textAge : TextView
     private lateinit var nextBtn : Button
+    private lateinit var nextBtn2 : Button
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,12 +25,18 @@ class MainActivity : AppCompatActivity() {
         textName = findViewById(R.id.textName)
         textAge = findViewById(R.id.textAge)
         nextBtn = findViewById(R.id.nextBtn)
+        nextBtn2 = findViewById(R.id.nextBtnTwo)
 
         initResultText()
 
         nextBtn.setOnClickListener {
             val intent = Intent(this,SecondActivity::class.java)
             resultLauncher.launch(intent) // startActivityForResult 랑 동일한 기능 이다.
+        }
+
+        nextBtn2.setOnClickListener {
+            val intent = Intent(this,RxActivity::class.java)
+            startActivity(intent)
         }
     }
 
