@@ -1080,3 +1080,15 @@ fun oneShowChar(s: String): String {
     }
     return resultArr.toString()
 }
+
+//연속된 수의 합 -> 규칙;;
+fun solutionHap(num: Int, total: Int): IntArray {
+    val answer: IntArray = IntArray(num)
+    val nSum = num * (num + 1) / 2
+    val start = (total - nSum) / num
+
+    for (i in 1..num) {
+        answer[i-1] = i + start
+    }
+    return answer
+}
