@@ -14,7 +14,7 @@ import kotlin.math.abs
 import kotlin.math.roundToInt
 
 fun main() {
-    println(pressStr("hello", "ohell"))
+    println(oneShowChar("abcabcadc"))
 }
 
 //3003번
@@ -1063,7 +1063,20 @@ fun pressStr(a: String, b: String): Int {
         //마지막 문자를 잘라서 다시 맨 앞에 붙인다.
         val x = aa.substring(aa.length - 1)
         aa = x + aa.substring(0, aa.length - 1)
-        answer ++
+        answer++
     }
     return -1
+}
+
+fun oneShowChar(s: String): String {
+    val charHash = hashMapOf<Char, Int>()
+    s.forEach {
+        if (!charHash.contains(it)) charHash[it] = 1
+        else charHash[it] = charHash[it]!!.plus(1)
+    }
+    val resultArr = mutableListOf<Char>()
+    charHash.forEach { (c, i) ->
+        if (i == 1) resultArr.add(c)
+    }
+    return resultArr.toString()
 }
