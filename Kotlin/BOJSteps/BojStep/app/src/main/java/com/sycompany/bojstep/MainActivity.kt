@@ -2,8 +2,10 @@ package com.sycompany.bojstep
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.TypedValue
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
@@ -52,4 +54,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    //Integer 값을 DP 값으로 변환
+    inline val Int.toDp: Int
+        get() = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            this.toFloat(),
+            Resources.getSystem().displayMetrics
+        ).toInt()
 }
