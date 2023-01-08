@@ -1092,3 +1092,6 @@ fun solutionHap(num: Int, total: Int): IntArray {
     }
     return answer
 }
+
+//합성수 구하기
+fun hapSungSu(n: Int) = (1..n).filter { i -> (1..i).filter { i % it == 0 }.size > 2 }.size
