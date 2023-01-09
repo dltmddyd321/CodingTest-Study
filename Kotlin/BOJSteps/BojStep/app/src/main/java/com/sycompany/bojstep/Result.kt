@@ -1095,3 +1095,14 @@ fun solutionHap(num: Int, total: Int): IntArray {
 
 //합성수 구하기
 fun hapSungSu(n: Int) = (1..n).filter { i -> (1..i).filter { i % it == 0 }.size > 2 }.size
+
+fun checkNumberPattern(common: IntArray): Int {
+    var res = 0
+
+    res = if ((common[1] - common[0]) == (common[2] - common[1])) {
+        common[common.size - 1] + (common[1] - common[0])
+    } else {
+        common[common.size - 1] * (common[1] / common[0])
+    }
+    return res
+}
