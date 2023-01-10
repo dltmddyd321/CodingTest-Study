@@ -1106,3 +1106,22 @@ fun checkNumberPattern(common: IntArray): Int {
     }
     return res
 }
+
+fun checkLogin(id_pw: Array<String>, db: Array<Array<String>>): String {
+    val id = id_pw[0]
+    val pw = id_pw[1]
+
+    var idChecked = false
+    var pwChecked = false
+
+    db.forEach {
+        if (it[0] == id) idChecked = true
+        if (it[1] == pw) pwChecked = true
+    }
+
+    return if (idChecked && pwChecked) {
+        "login"
+    } else if (idChecked && !pwChecked) {
+        "wrong pw"
+    } else "fail"
+}
