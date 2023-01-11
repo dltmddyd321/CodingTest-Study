@@ -40,6 +40,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,RxActivity::class.java)
             startActivity(intent)
         }
+
+        textName.setOnClickListener {
+            val intent = Intent(this,ImageActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     @SuppressLint("SetTextI18n")
