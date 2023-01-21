@@ -1134,3 +1134,15 @@ fun combination(n: Int, r: Int): Int {
 fun solutionCom(balls: Int, share: Int): Int {
     return combination(balls, share)
 }
+
+fun alienDic(spell: Array<String>, dic: Array<String>): Int {
+    var isAvailable = false
+    dic.forEach { word ->
+        var checkCnt = 0
+        spell.forEach {
+            if (it in word) checkCnt += 1
+        }
+        if (checkCnt == word.length) isAvailable = true
+    }
+    return if (isAvailable) 1 else 2
+}
