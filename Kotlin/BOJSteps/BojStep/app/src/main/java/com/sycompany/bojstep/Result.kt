@@ -35,7 +35,7 @@ fun chess() {
 }
 
 //14681
-fun quadrant(x: Int, y: Int) : Int {
+fun quadrant(x: Int, y: Int): Int {
     return if (x > 0 && y > 0) {
         1
     } else if (x < 0 && y > 0) {
@@ -47,7 +47,7 @@ fun quadrant(x: Int, y: Int) : Int {
 
 //2525
 fun ovenClock() = with(Scanner(System.`in`)) {
-    var (h , m) = Pair(nextInt(), nextInt())
+    var (h, m) = Pair(nextInt(), nextInt())
     val cookingTime = nextInt()
 
     if (m + cookingTime >= 60) {
@@ -73,17 +73,17 @@ fun diceResult() = with(Scanner(System.`in`)) {
 
     val values = listOf(a, b, c)
 
-    if(a==b && b==c) {
-        println("${10000+(a*1000)}")
-    } else if (a==b && b!=c) {
-        println("${1000+(a*100)}")
-    } else if (a!=b && b==c) {
-        println("${1000+(c*100)}")
-    } else if (a==c && b!=c) {
-        println("${1000+(c*100)}")
-    } else if (a!=b && b!=c && a!=c) {
+    if (a == b && b == c) {
+        println("${10000 + (a * 1000)}")
+    } else if (a == b && b != c) {
+        println("${1000 + (a * 100)}")
+    } else if (a != b && b == c) {
+        println("${1000 + (c * 100)}")
+    } else if (a == c && b != c) {
+        println("${1000 + (c * 100)}")
+    } else if (a != b && b != c && a != c) {
         //배열에서 최대 값을 추출한다.
-        println("${Collections.max(values)*100}")
+        println("${Collections.max(values) * 100}")
     }
 }
 
@@ -144,7 +144,7 @@ fun plusCycle() = with(BufferedReader(InputStreamReader(System.`in`))) {
 
     do {
         number = number % 10 * 10 + (number / 10 + number % 10) % 10
-        cnt ++
+        cnt++
     } while (copy != number)
 
     w.write(cnt.toString())
@@ -154,7 +154,7 @@ fun plusCycle() = with(BufferedReader(InputStreamReader(System.`in`))) {
 }
 
 //4344
-fun average() = with(Scanner(System.`in`)){
+fun average() = with(Scanner(System.`in`)) {
     val c = nextInt()
 
     for (i in 0 until c) {
@@ -173,7 +173,7 @@ fun average() = with(Scanner(System.`in`)){
         avg = sum.toDouble() / size
         for (j in array.indices) {
             if (array[j] > avg) {
-                cnt ++
+                cnt++
             }
         }
         System.out.printf("%.3f%s\n", cnt.toDouble() / size * 100, "%")
@@ -191,7 +191,7 @@ fun selfNumber() {
         var sum = n
 
         while (num > 0) {
-            sum += num%10
+            sum += num % 10
             num /= 10
         }
 
@@ -203,7 +203,7 @@ fun selfNumber() {
         }
     }
 
-    while (ori< max) {
+    while (ori < max) {
         d(ori++)
     }
 
@@ -223,7 +223,7 @@ fun groupWord() {
     repeat(n) {
         val word = readln()
         val charSet = mutableSetOf<Char>()
-        var lastChar : Char? = null
+        var lastChar: Char? = null
         var isGroup = true
 
         word.forEach {
@@ -233,14 +233,15 @@ fun groupWord() {
                 if (!charSet.add(it)) isGroup = false
             }
         }
-        if (!isGroup) groupWords --
+        if (!isGroup) groupWords--
     }
     println(groupWords)
 }
 
 //아스키코드
 fun dial() {
-    val arr = intArrayOf(3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10)
+    val arr =
+        intArrayOf(3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10)
 
     val br = BufferedReader(InputStreamReader(System.`in`))
     var res = 0
@@ -262,8 +263,8 @@ fun test() {
     val b = s.nextInt()
     val c = s.nextInt()
 
-    val n: Int = if (c-b > 0) {
-        a/(c-b) + 1
+    val n: Int = if (c - b > 0) {
+        a / (c - b) + 1
     } else {
         -1
     }
@@ -284,10 +285,10 @@ fun findNum() {
         for (j in 2..a) {
             //소수 조건
             if (a % j == 0) {
-                checkCnt ++
+                checkCnt++
             }
         }
-        if (checkCnt == 1) totalCnt ++
+        if (checkCnt == 1) totalCnt++
         checkCnt = 0
     }
     println(totalCnt)
@@ -308,7 +309,7 @@ fun rangeNum() = with(BufferedReader(InputStreamReader(System.`in`))) {
     for (i in 2..n) {
         if (arr[i]) {
             //소수의 배수는 전부 소수가 아니다.
-            for(j in (2 * i)..n step i) {
+            for (j in (2 * i)..n step i) {
                 arr[j] = false
             }
         }
@@ -339,21 +340,21 @@ fun findFountain() = with(Scanner(System.`in`)) {
     //분자 분모 합 구하기
     while (tmp < x) {
         tmp += sum
-        sum ++
+        sum++
     }
 
     //합이 짝수라면
     if (sum % 2 == 0) {
         val m = (tmp - x + 1)
         val d = sum - m
-        println("${m/d}")
+        println("${m / d}")
     }
 
     //합이 홀수라면
     else {
         val d = (tmp - x + 1)
         val m = sum - d
-        println("${m/d}")
+        println("${m / d}")
     }
 }
 
@@ -373,8 +374,9 @@ fun sortOne() = with(Scanner(System.`in`)) {
 //피보나치 수열
 fun fibo() = with(BufferedReader(InputStreamReader(System.`in`))) {
     fun fibonacci(N: Int): Int {
-        return if (N < 2) N else fibonacci(N-1) + fibonacci(N-2)
+        return if (N < 2) N else fibonacci(N - 1) + fibonacci(N - 2)
     }
+
     val n = readLine().toInt()
     println(fibonacci(n))
 }
@@ -405,7 +407,7 @@ fun cutLine() = with(BufferedReader(InputStreamReader(System.`in`))) {
     }
 
     arr.sortedDescending()
-    println(arr[p-1])
+    println(arr[p - 1])
 }
 
 fun sorted() = with(Scanner(System.`in`)) {
@@ -532,13 +534,14 @@ fun setPointUp() = with(Scanner(System.`in`)) {
         val x: Int,
         val y: Int
     )
+
     val list = arrayListOf<Point>()
     val cnt = nextInt()
     repeat(cnt) {
         list.add(Point(nextInt(), nextInt()))
     }
 
-    val result = list.sortedWith(compareBy({it.x}, {it.y}))
+    val result = list.sortedWith(compareBy({ it.x }, { it.y }))
 
     println(result)
 }
@@ -570,16 +573,16 @@ fun stringSet() = with(Scanner(System.`in`)) {
     println(result)
 }
 
-fun stringSetTwo() = with(System.out.bufferedWriter()){
+fun stringSetTwo() = with(System.out.bufferedWriter()) {
     val br = System.`in`.bufferedReader()
     val set = HashSet<String>()
-    val (n,m) = br.readLine().split(' ').map{it.toInt()}
-    var answer=0
-    for(i in 0 until n){
+    val (n, m) = br.readLine().split(' ').map { it.toInt() }
+    var answer = 0
+    for (i in 0 until n) {
         set.add(br.readLine())
     }
-    for(i in 0 until m){
-        if(set.contains(br.readLine()))
+    for (i in 0 until m) {
+        if (set.contains(br.readLine()))
             answer++
     }
 
@@ -712,7 +715,7 @@ fun searchSameCard() = with(Scanner(System.`in`)) {
         var resultCnt = 0
         allCards.forEach { allNum ->
             if (selectNum == allNum) {
-                resultCnt ++
+                resultCnt++
             }
         }
         resultCounts.add(resultCnt)
@@ -730,8 +733,7 @@ fun parenthesisCheck() = with(BufferedReader(InputStreamReader(System.`in`))) {
         for (i in str) {
             if (i == '(') {
                 stack.add(i)
-            }
-            else if (i == ')') {
+            } else if (i == ')') {
                 if (stack.isEmpty()) {
                     println("NO")
                     return
@@ -783,9 +785,9 @@ fun movieNumber() = with(System.`in`.bufferedReader()) {
     var n = readLine().toInt()
     var startNum = 665
     while (n != 0) {
-        startNum ++
+        startNum++
         if (startNum.toString().contains("666")) {
-            n --
+            n--
         }
     }
     println(startNum)
@@ -809,7 +811,7 @@ fun soinsu() {
 
 //종이 자르기
 fun solution(M: Int, N: Int): Int {
-    return M*N - 1
+    return M * N - 1
 }
 
 fun solutionDemon(n: Int, t: Int): Int {
@@ -907,7 +909,7 @@ fun copyright() {
     val count = st.nextToken().toInt()
     val avg = st.nextToken().toInt()
 
-    bw.write("${count*(avg-1)+1}\n")
+    bw.write("${count * (avg - 1) + 1}\n")
     bw.flush()
     bw.close()
     br.close()
@@ -969,7 +971,7 @@ fun prompt(args: Array<String>) = with(System.`in`.bufferedReader()) {
         }
     }
 
-    val checkList = BooleanArray(files[0].length){ true }
+    val checkList = BooleanArray(files[0].length) { true }
     for (i in files[0].indices) for (j in 1 until n) {
         if (checkList[i]) checkList[i] = files[0][i] == files[j][i]
     }
@@ -1088,7 +1090,7 @@ fun solutionHap(num: Int, total: Int): IntArray {
     val start = (total - nSum) / num
 
     for (i in 1..num) {
-        answer[i-1] = i + start
+        answer[i - 1] = i + start
     }
     return answer
 }
@@ -1128,7 +1130,7 @@ fun checkLogin(id_pw: Array<String>, db: Array<Array<String>>): String {
 
 fun combination(n: Int, r: Int): Int {
     return if (r == 0 || n == r) 1
-    else combination(n-1, r-1) + combination(n-1, r)
+    else combination(n - 1, r - 1) + combination(n - 1, r)
 }
 
 fun solutionCom(balls: Int, share: Int): Int {
@@ -1145,4 +1147,24 @@ fun alienDic(spell: Array<String>, dic: Array<String>): Int {
         if (checkCnt == word.length) isAvailable = true
     }
     return if (isAvailable) 1 else 2
+}
+
+//가장 가까운 글자
+fun solution(s: String): Array<Int?> {
+    val answer: Array<Int?> = arrayOfNulls(s.length)
+    //맨 처음 글자는 무조건 -1
+    answer[0] = -1
+
+    for (i in s.indices) {
+        val x = s.lastIndexOf(s.substring(i, i + 1), i - 1)
+
+        //x 값이 -1이면, -1을 그대로 넣고, 아니라면 기존 위치 인덱스에서 존재하는 인덱스 값을 뺀다.
+        if (x != -1) {
+            answer[i] = i - x
+        } else {
+            answer[i] = x
+        }
+    }
+
+    return answer
 }
