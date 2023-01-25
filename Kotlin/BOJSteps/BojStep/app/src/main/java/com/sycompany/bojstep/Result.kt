@@ -12,6 +12,7 @@ import java.util.regex.Pattern
 import kotlin.collections.ArrayDeque
 import kotlin.math.abs
 import kotlin.math.roundToInt
+import kotlin.math.sqrt
 
 fun main() {
     println(oneShowChar("abcabcadc"))
@@ -1167,4 +1168,10 @@ fun solution(s: String): Array<Int?> {
     }
 
     return answer
+}
+
+//제곱근 판별
+fun checkSqrt(n: Int): Int {
+    val sqrt = sqrt(n.toDouble()).toLong()
+    return if (sqrt * sqrt == n.toLong()) 1 else 2
 }
