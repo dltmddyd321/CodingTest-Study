@@ -1175,3 +1175,15 @@ fun checkSqrt(n: Int): Int {
     val sqrt = sqrt(n.toDouble()).toLong()
     return if (sqrt * sqrt == n.toLong()) 1 else 2
 }
+
+fun hateEng(numbers: String): Long {
+    var numbers = numbers
+    val arr =
+        arrayOf("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
+    for (i in arr.indices) {
+        if (numbers.contains(arr[i])) {
+            numbers = numbers.replace(arr[i].toRegex(), i.toString())
+        }
+    }
+    return numbers.toLong()
+}
