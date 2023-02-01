@@ -15,7 +15,7 @@ import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 fun main() {
-    println(oneShowChar("abcabcadc"))
+    println(changePosition("I love you", 3, 6))
 }
 
 //3003번
@@ -1186,4 +1186,25 @@ fun hateEng(numbers: String): Long {
         }
     }
     return numbers.toLong()
+}
+
+fun changePosition(my_string: String, num1: Int, num2: Int): String {
+    val charList = mutableListOf<Char>()
+
+    my_string.forEach {
+        charList.add(it)
+    }
+
+    val char1 = charList[num1]
+    val char2 = charList[num2]
+
+    charList[num2] = char1
+    charList[num1] = char2
+
+    var result = ""
+    charList.forEach {
+        result += it
+    }
+
+    return result
 }
