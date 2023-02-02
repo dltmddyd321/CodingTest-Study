@@ -1208,3 +1208,29 @@ fun changePosition(my_string: String, num1: Int, num2: Int): String {
 
     return result
 }
+
+fun makeHamburger(ingredient: IntArray): Int {
+    var result = 0
+    val resultArr = intArrayOf(1, 2, 3, 1)
+    val hamList = mutableListOf<Int>()
+
+    ingredient.forEach {
+        hamList.add(it)
+        if (hamList.size >= 4) {
+            val tmpList = mutableListOf<Int>()
+            tmpList.add(hamList[hamList.size - 4])
+            tmpList.add(hamList[hamList.size - 3])
+            tmpList.add(hamList[hamList.size - 2])
+            tmpList.add(hamList[hamList.size - 1])
+
+            if (tmpList.equals(resultArr)) {
+                result ++
+                hamList.remove(hamList.size - 1)
+                hamList.remove(hamList.size - 1)
+                hamList.remove(hamList.size - 1)
+                hamList.remove(hamList.size - 1)
+            }
+        }
+    }
+    return result
+}
