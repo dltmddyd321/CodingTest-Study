@@ -1234,3 +1234,16 @@ fun makeHamburger(ingredient: IntArray): Int {
     }
     return result
 }
+
+fun checkTemp(size: Int, interval: Int) = with(Scanner(System.`in`)) {
+    val arr = arrayListOf<Int>()
+    repeat(size) {
+        arr.add(nextInt())
+    }
+
+    val checkList = arrayListOf<Int>()
+    for (i in 0 until arr.size) {
+        checkList.add(arr[i] + arr[interval - 1])
+    }
+    println(checkList.max())
+}
