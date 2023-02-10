@@ -10,12 +10,13 @@ import java.math.BigInteger
 import java.util.*
 import java.util.regex.Pattern
 import kotlin.collections.ArrayDeque
+import kotlin.collections.ArrayList
 import kotlin.math.abs
 import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 fun main() {
-    println(changePosition("I love you", 3, 6))
+    println(characterPosition(arrayListOf("down", "down", "down", "down", "down"), intArrayOf(7, 9)))
 }
 
 //3003번
@@ -1246,4 +1247,39 @@ fun checkTemp(size: Int, interval: Int) = with(Scanner(System.`in`)) {
         checkList.add(arr[i] + arr[interval - 1])
     }
     println(checkList.max())
+}
+
+fun characterPosition(keyInput: ArrayList<String>, board: IntArray): IntArray {
+    val answer: IntArray = intArrayOf(0, 0)
+    val list = keyInput.toList()
+    for (i in list) {
+        when (i) {
+            "left" -> {
+                if (answer[0] <= -(board[0] / 2)) {
+                    continue
+                }
+                answer[0] -= 1
+            }
+            "right" -> {
+                if (answer[0] >= board[0] / 2) {
+                    continue
+                }
+                answer[0] += 1
+            }
+            "up" -> {
+                if (answer[1] >= board[1] / 2) {
+                    continue
+                }
+                answer[1] += 1
+            }
+            "down" -> {
+                if (answer[1] <= -(board[1] / 2)) {
+                    continue
+                }
+                answer[1] -= 1
+            }
+        }
+    }
+
+    return answer
 }
