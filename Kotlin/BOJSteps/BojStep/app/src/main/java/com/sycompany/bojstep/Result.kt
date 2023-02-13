@@ -1283,3 +1283,14 @@ fun characterPosition(keyInput: ArrayList<String>, board: IntArray): IntArray {
 
     return answer
 }
+
+fun changeArrayDirection(numbers: IntArray, direction: String): IntArray {
+    val tmpList = numbers.toList()
+    if (direction == "right") {
+        //배열의 전체 순서 전환
+        Collections.rotate(tmpList, 1)
+    } else {
+        Collections.rotate(tmpList, -1)
+    }
+    return tmpList.toIntArray()
+}
