@@ -1294,3 +1294,61 @@ fun changeArrayDirection(numbers: IntArray, direction: String): IntArray {
     }
     return tmpList.toIntArray()
 }
+
+fun teamName() {
+
+    fun calProbability(lCnt: Int, OCnt: Int, VCnt: Int, ECnt: Int) = ((lCnt + OCnt) * (lCnt + VCnt) * (lCnt + ECnt) * (OCnt + VCnt) * (OCnt + ECnt) * (VCnt + ECnt)) % 100
+
+    var cntL = 0
+    var cntO = 0
+    var cntV = 0
+    var cntE = 0
+    var max = 0
+    var resultTeam = ""
+
+    val playerName = readln()
+    playerName.forEach {
+        when (it) {
+            'L' -> cntL ++
+            'O' -> cntO ++
+            'V' -> cntV ++
+            'E' -> cntE ++
+        }
+    }
+
+    val teamCnt = readln().toInt()
+
+    repeat(teamCnt) {
+        var curLCnt = 0
+        var curOCnt = 0
+        var curVCnt = 0
+        var curECnt = 0
+
+        val teamName = readln()
+        teamName.forEach {
+            when (it) {
+                'L' -> curLCnt ++
+                'O' -> curOCnt ++
+                'V' -> curVCnt ++
+                'E' -> curECnt ++
+            }
+        }
+
+        val curProbability =
+            calProbability((cntL + curLCnt), (cntO + curOCnt), (cntV + curVCnt), (cntE + curECnt))
+
+        //최대값까지 갱신
+        if (max < curProbability) {
+            max = curProbability
+            resultTeam = teamName
+        }
+
+        if (max == curProbability) {
+            if (resultTeam == "") resultTeam = teamName
+            //사전순으로 출력
+            resultTeam = listOf(resultTeam, teamName).sorted()[0]
+        }
+    }
+
+    println(resultTeam)
+}
