@@ -16,7 +16,12 @@ import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 fun main() {
-    println(characterPosition(arrayListOf("down", "down", "down", "down", "down"), intArrayOf(7, 9)))
+    println(
+        characterPosition(
+            arrayListOf("down", "down", "down", "down", "down"),
+            intArrayOf(7, 9)
+        )
+    )
 }
 
 //3003번
@@ -1225,7 +1230,7 @@ fun makeHamburger(ingredient: IntArray): Int {
             tmpList.add(hamList[hamList.size - 1])
 
             if (tmpList.equals(resultArr)) {
-                result ++
+                result++
                 hamList.remove(hamList.size - 1)
                 hamList.remove(hamList.size - 1)
                 hamList.remove(hamList.size - 1)
@@ -1297,7 +1302,8 @@ fun changeArrayDirection(numbers: IntArray, direction: String): IntArray {
 
 fun teamName() {
 
-    fun calProbability(lCnt: Int, OCnt: Int, VCnt: Int, ECnt: Int) = ((lCnt + OCnt) * (lCnt + VCnt) * (lCnt + ECnt) * (OCnt + VCnt) * (OCnt + ECnt) * (VCnt + ECnt)) % 100
+    fun calProbability(lCnt: Int, OCnt: Int, VCnt: Int, ECnt: Int) =
+        ((lCnt + OCnt) * (lCnt + VCnt) * (lCnt + ECnt) * (OCnt + VCnt) * (OCnt + ECnt) * (VCnt + ECnt)) % 100
 
     var cntL = 0
     var cntO = 0
@@ -1309,10 +1315,10 @@ fun teamName() {
     val playerName = readln()
     playerName.forEach {
         when (it) {
-            'L' -> cntL ++
-            'O' -> cntO ++
-            'V' -> cntV ++
-            'E' -> cntE ++
+            'L' -> cntL++
+            'O' -> cntO++
+            'V' -> cntV++
+            'E' -> cntE++
         }
     }
 
@@ -1327,10 +1333,10 @@ fun teamName() {
         val teamName = readln()
         teamName.forEach {
             when (it) {
-                'L' -> curLCnt ++
-                'O' -> curOCnt ++
-                'V' -> curVCnt ++
-                'E' -> curECnt ++
+                'L' -> curLCnt++
+                'O' -> curOCnt++
+                'V' -> curVCnt++
+                'E' -> curECnt++
             }
         }
 
@@ -1351,4 +1357,12 @@ fun teamName() {
     }
 
     println(resultTeam)
+}
+
+//삼각형의 완성조건(1)
+fun checkFit(sides: IntArray): Int {
+    val list = sides.toList().sortedDescending()
+    return if (list[1] + list[2] > list[0]) {
+        1
+    } else 2
 }
