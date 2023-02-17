@@ -16,12 +16,8 @@ import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 fun main() {
-    println(
-        characterPosition(
-            arrayListOf("down", "down", "down", "down", "down"),
-            intArrayOf(7, 9)
-        )
-    )
+    val arr = intArrayOf(1, 3, 4, 6)
+    println(foodFight(arr))
 }
 
 //3003번
@@ -1365,4 +1361,31 @@ fun checkFit(sides: IntArray): Int {
     return if (list[1] + list[2] > list[0]) {
         1
     } else 2
+}
+
+//푸드 파이트 대회
+fun foodFight(food: IntArray): String {
+    val foodList = food.toList()
+    val firsts = mutableListOf<Int>()
+    val seconds = mutableListOf<Int>()
+    for (i in foodList.indices) {
+        if (i > 0) {
+            val foodCnt = foodList[i]
+            if (foodCnt % 2 != 0) {
+                repeat((foodCnt - 1) / 2) {
+                    firsts.add(i)
+                    seconds.add(i)
+                }
+            } else {
+                repeat(foodCnt / 2) {
+                    firsts.add(i)
+                    seconds.add(i)
+                }
+            }
+        }
+    }
+    firsts.sort()
+    seconds.sortDescending()
+    val result = firsts + 0 + seconds
+    return result.toString()
 }
