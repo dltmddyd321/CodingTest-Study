@@ -16,8 +16,10 @@ import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 fun main() {
-    val arr = intArrayOf(1, 3, 4, 6)
-    println(foodFight(arr))
+    val a = arrayOf("i", "drink", "water")
+    val b = arrayOf("want", "to")
+    val c = arrayOf("i", "want", "to", "drink", "water")
+    println(cardPack(a, b, c))
 }
 
 //3003번
@@ -1388,4 +1390,34 @@ fun foodFight(food: IntArray): String {
     seconds.sortDescending()
     val result = firsts + 0 + seconds
     return result.toString()
+}
+
+fun cardPack(cards1: Array<String>, cards2: Array<String>, goal: Array<String>): String {
+    val firstList = cards1.toMutableList()
+    val res = mutableListOf<String>()
+
+    res.add(firstList[0])
+    res.addAll(cards2)
+    res.add(firstList[1])
+    res.add(firstList[2])
+
+    fun isEqual(first: List<String>?, second: List<String>?): Boolean {
+        if (first == null || second == null) {
+            return false
+        }
+        if (first.size != second.size) {
+            return false
+        }
+        for (i in first.indices) {
+            if (first[i] != second[i]) {
+                return false
+            }
+        }
+        return true
+    }
+
+    val result = isEqual(res, goal.toMutableList())
+    return if (result) {
+        "Yes"
+    } else "No"
 }
