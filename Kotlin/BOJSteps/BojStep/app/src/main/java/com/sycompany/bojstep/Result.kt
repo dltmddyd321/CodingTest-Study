@@ -1421,3 +1421,8 @@ fun cardPack(cards1: Array<String>, cards2: Array<String>, goal: Array<String>):
         "Yes"
     } else "No"
 }
+
+fun cutChoco(args: Array<String>) = with(BufferedReader(InputStreamReader(System.`in`))) {
+    val inputs = readLine().split(" ")
+    println(inputs[0].toInt() * inputs[1].toInt() - 1)
+}
