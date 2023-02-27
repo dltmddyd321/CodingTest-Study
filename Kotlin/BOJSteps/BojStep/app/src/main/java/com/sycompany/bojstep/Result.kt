@@ -10,7 +10,6 @@ import java.math.BigInteger
 import java.util.*
 import java.util.regex.Pattern
 import kotlin.collections.ArrayDeque
-import kotlin.collections.ArrayList
 import kotlin.math.abs
 import kotlin.math.roundToInt
 import kotlin.math.sqrt
@@ -1425,4 +1424,35 @@ fun cardPack(cards1: Array<String>, cards2: Array<String>, goal: Array<String>):
 fun cutChoco(args: Array<String>) = with(BufferedReader(InputStreamReader(System.`in`))) {
     val inputs = readLine().split(" ")
     println(inputs[0].toInt() * inputs[1].toInt() - 1)
+}
+
+fun check2007() {
+    val scan = Scanner(System.`in`)
+
+    val month = scan.nextInt()
+    val day = scan.nextInt()
+
+    var sum = 0
+
+    //2007년의 각 월 일 수들
+    val months = intArrayOf(0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+
+    for (i in 1..12) {
+        if (i == month) {
+            break
+        }
+        sum += months[i]
+    }
+
+    sum += day
+
+    when (sum % 7) {
+        0 -> println("SUN")
+        1 -> println("MON")
+        2 -> println("TUE")
+        3 -> println("WED")
+        4 -> println("THU")
+        5 -> println("FRI")
+        6 -> println("SAT")
+    }
 }
