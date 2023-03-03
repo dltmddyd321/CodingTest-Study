@@ -371,8 +371,7 @@ fun sortOne() = with(Scanner(System.`in`)) {
         list.add(nextInt())
     }
 
-    list.sorted()
-        .forEach { println(it) }
+    list.sorted().forEach { println(it) }
 }
 
 //피보나치 수열
@@ -535,8 +534,7 @@ fun zeroStack() = with(System.`in`.bufferedReader()) {
 
 fun setPointUp() = with(Scanner(System.`in`)) {
     data class Point(
-        val x: Int,
-        val y: Int
+        val x: Int, val y: Int
     )
 
     val list = arrayListOf<Point>()
@@ -586,8 +584,7 @@ fun stringSetTwo() = with(System.out.bufferedWriter()) {
         set.add(br.readLine())
     }
     for (i in 0 until m) {
-        if (set.contains(br.readLine()))
-            answer++
+        if (set.contains(br.readLine())) answer++
     }
 
     write("$answer")
@@ -1462,4 +1459,17 @@ fun alienDic() {
     fun solution(spell: Array<String>, dic: Array<String>) =
         if (dic.map { it.toList().sorted().joinToString("") }
                 .contains(spell.sortedArray().joinToString(""))) 1 else 2
+}
+
+//다항식 더하기
+fun plusLine(polynomial: String): String {
+    var xCnt = 0
+    var num = 0
+
+    for (s in polynomial.split(" ".toRegex())) {
+        if (s.contains("x")) {
+            xCnt += if (s == "x") 1 else s.replace("x".toRegex(), "").toInt()
+        } else if (s != "x") num += s.toInt()
+    }
+    return (if (xCnt != 0) if (xCnt > 1) "${xCnt}x" else "x" else "") + if (num != 0) (if (xCnt != 0) " + " else "") + num else if (xCnt == 0) "0" else ""
 }
