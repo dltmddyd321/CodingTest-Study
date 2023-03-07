@@ -1473,3 +1473,11 @@ fun plusLine(polynomial: String): String {
     }
     return (if (xCnt != 0) if (xCnt > 1) "${xCnt}x" else "x" else "") + if (num != 0) (if (xCnt != 0) " + " else "") + num else if (xCnt == 0) "0" else ""
 }
+
+fun deleteSelectedChar(my_string: String, letter: String): String {
+    var res = ""
+    letter.toCharArray().forEach {
+        res = my_string.replace(it.toString(), "")
+    }
+    return res
+}
