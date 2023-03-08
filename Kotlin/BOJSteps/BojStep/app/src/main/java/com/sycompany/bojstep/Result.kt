@@ -15,10 +15,7 @@ import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 fun main() {
-    val a = arrayOf("i", "drink", "water")
-    val b = arrayOf("want", "to")
-    val c = arrayOf("i", "want", "to", "drink", "water")
-    println(cardPack(a, b, c))
+    println(chickenCoupon(1081))
 }
 
 //3003번
@@ -1478,6 +1475,18 @@ fun deleteSelectedChar(my_string: String, letter: String): String {
     var res = ""
     letter.toCharArray().forEach {
         res = my_string.replace(it.toString(), "")
+    }
+    return res
+}
+
+fun ants(hp: Int): Int = hp / 5 + (hp % 5 / 3) + (hp % 5 % 3)
+
+fun chickenCoupon(chicken: Int): Int {
+    var order = chicken
+    var res = 0
+    while (order >= 10) {
+        res += order / 10
+        order = (order / 10) + (order % 10)
     }
     return res
 }
