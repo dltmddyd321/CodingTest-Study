@@ -43,3 +43,13 @@ fun pizzaOne(n: Int) = if (n % 7 == 0) {
 } else {
     n / 7 + 1
 }
+
+fun checking(angle: Int): Int {
+    if (angle == 180) return 4
+    return when (angle) {
+        in 1..89 -> 1
+        90 -> 2
+        in 91..179 -> 3
+        else -> 0
+    }
+}
