@@ -53,3 +53,14 @@ fun checking(angle: Int): Int {
         else -> 0
     }
 }
+
+fun hidePlus(my_string: String): Int {
+    val a = my_string.split("")
+    var res = 0
+    for (i in a.indices) {
+        if (a[i].toIntOrNull() != null) { //Int형 변환에 성공 시
+            res += a[i].toInt()
+        }
+    }
+    return res
+}
