@@ -64,3 +64,8 @@ fun hidePlus(my_string: String): Int {
     }
     return res
 }
+
+fun emergencyCheck(emergency: IntArray) = emergency.map {
+    //내림차순하여 인덱스 체크
+    emergency.sortedDescending().indexOf(it) + 1
+}.toIntArray()
