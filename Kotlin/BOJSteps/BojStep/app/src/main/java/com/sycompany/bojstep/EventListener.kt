@@ -69,3 +69,7 @@ fun emergencyCheck(emergency: IntArray) = emergency.map {
     //내림차순하여 인덱스 체크
     emergency.sortedDescending().indexOf(it) + 1
 }.toIntArray()
+
+//369 게임
+fun three(order: Int) = order.toString().map { it.digitToInt() }
+    .count { it != 0 && it % 3 == 0 }
