@@ -73,3 +73,23 @@ fun emergencyCheck(emergency: IntArray) = emergency.map {
 //369 게임
 fun three(order: Int) = order.toString().map { it.digitToInt() }
     .count { it != 0 && it % 3 == 0 }
+
+fun mostFound(array: IntArray): Int {
+    if (array.size == 1) return 1
+    val checkList = mutableMapOf<Int, Int>()
+    val arr = array.toList()
+    val distinctList = arr.distinct()
+    distinctList.forEach {
+        checkList[it] = 0
+    }
+
+    arr.forEach { basic ->
+        checkList.forEach {
+            if (basic == it.key) checkList[it.key] = it.value + 1
+        }
+    }
+
+    val sortMap = checkList.toList().sortedByDescending { it.second }.toMap() as MutableMap
+    if (sortMap[0] == sortMap[1]) return -1
+    return sortMap[0] ?: -1
+}
