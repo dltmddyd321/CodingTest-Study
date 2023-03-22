@@ -7,8 +7,9 @@ import android.widget.Toast
 
 class LocaleChangedReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        if (intent.action == Intent.ACTION_LOCALE_CHANGED) {
-            Toast.makeText(context, "언어가 변경됨!", Toast.LENGTH_SHORT).show()
+        when (intent.action) {
+            Intent.ACTION_LOCALE_CHANGED -> Toast.makeText(context, "언어가 변경됨!", Toast.LENGTH_SHORT).show()
+            Intent.ACTION_TIMEZONE_CHANGED -> Toast.makeText(context, "시간대가 변경됨!", Toast.LENGTH_SHORT).show()
         }
     }
 }

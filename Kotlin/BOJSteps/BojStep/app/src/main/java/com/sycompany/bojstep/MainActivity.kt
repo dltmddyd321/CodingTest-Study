@@ -2,6 +2,7 @@ package com.sycompany.bojstep
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 
 class MainActivity : AppCompatActivity() {
 
+    private var settingBroadcastReceiver: LocaleChangedReceiver? = null
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private lateinit var textName : TextView
     private lateinit var textAge : TextView
@@ -23,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        settingBroadcastReceiver = LocaleChangedReceiver()
 
         textName = findViewById(R.id.textName)
         textAge = findViewById(R.id.textAge)
@@ -67,4 +71,24 @@ class MainActivity : AppCompatActivity() {
             this.toFloat(),
             Resources.getSystem().displayMetrics
         ).toInt()
+
+    override fun onResume() {
+        super.onResume()
+
+        if (settingBroadcastReceiver == null) return
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(Intent.ACTION_TIMEZONE_CHANGED)
+        registerReceiver(settingBroadcastReceiver, intentFilter)
+
+        val intent = Intent()
+        intent.action = "com.sycompany.bojstep.settingbroadcast"
+        intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
+        sendBroadcast(intent)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (settingBroadcastReceiver == null) return
+        unregisterReceiver(settingBroadcastReceiver)
+    }
 }
