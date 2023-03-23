@@ -44,14 +44,14 @@
             </intent-filter>
         </activity>
         <!-- 브로드캐스트 리시버 정의 -->
-        <receiver
-            android:name=".LocaleChangedReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.sycompany.bojstep.settingbroadcast" />
-            </intent-filter>
-        </receiver>
+<!--        <receiver-->
+<!--            android:name=".LocaleChangedReceiver"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.sycompany.bojstep.settingbroadcast" />-->
+<!--            </intent-filter>-->
+<!--        </receiver>-->
     </application>
 
 </manifest>

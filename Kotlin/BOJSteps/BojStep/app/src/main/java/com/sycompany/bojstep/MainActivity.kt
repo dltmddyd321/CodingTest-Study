@@ -4,17 +4,19 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.res.Resources
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.TypedValue
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
 class MainActivity : AppCompatActivity() {
 
     private var settingBroadcastReceiver: LocaleChangedReceiver? = null
+    private val localBroadcastManager: LocalBroadcastManager? = null
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private lateinit var textName : TextView
     private lateinit var textAge : TextView
@@ -74,21 +76,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        val intent = Intent()
+        intent.action = Intent.ACTION_TIMEZONE_CHANGED
+//        intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
+        val broadcastManager = LocalBroadcastManager.getInstance(this)
+        broadcastManager.sendBroadcast(intent)
 
-        if (settingBroadcastReceiver == null) return
         val intentFilter = IntentFilter()
         intentFilter.addAction(Intent.ACTION_TIMEZONE_CHANGED)
-        registerReceiver(settingBroadcastReceiver, intentFilter)
+        settingBroadcastReceiver?.let { broadcastManager.registerReceiver(it, intentFilter) }
 
-        val intent = Intent()
-        intent.action = "com.sycompany.bojstep.settingbroadcast"
-        intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
-        sendBroadcast(intent)
+//        settingBroadcastReceiver?.let { broadcastManager.unregisterReceiver(it) }
     }
 
     override fun onPause() {
         super.onPause()
-        if (settingBroadcastReceiver == null) return
-        unregisterReceiver(settingBroadcastReceiver)
     }
 }
