@@ -1525,3 +1525,10 @@ fun mosCheck(letter: String): String {
 
 //순서쌍의 개수
 fun cntNumPair(n: Int) = (1..n).count { n % it == 0 }
+
+//설정 가능한 시간대 출력
+fun checkAllTimezone() {
+    val timezones = TimeZone.getAvailableIDs()
+    val items = timezones.map { TimeZone.getTimeZone(it) }
+        .map { "${it.displayName}\n${it.id} : ${it.getDisplayName(false, TimeZone.SHORT)}" }.toList().toTypedArray()
+}
