@@ -1,14 +1,15 @@
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.LinkedList
+import java.util.Queue
+import java.util.Scanner
 
 fun main() {
-    val word = readln()
-    val map = mutableMapOf<String, Int>()
+    val word = readln().toString()
+    val map = mutableMapOf<Char, Int>()
 
     word.forEach {
-        val character = it.lowercase()
+        val character = it.lowercaseChar()
 
         if (map.containsKey(character)) {
             map[character] = map[character]!!.plus(1)
@@ -21,6 +22,6 @@ fun main() {
     if (map.filter { it.value == max.value }.count() > 1) {
         print("?")
     } else {
-        print(max.key.uppercase())
+        print(max.key.uppercaseChar())
     }
 }
